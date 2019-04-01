@@ -1,0 +1,70 @@
+div.content {
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 80%;
+    min-height: 500px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16pt;
+    color: #003366;
+}
+
+div.header {
+    background-color: #76D6FF;
+    background: -webkit-gradient(linear, left top, left bottom, from(#76D6FF), to(white));
+    background: linear-gradient(#76D6FF, white);
+    width: 100%;
+    height: 140px;
+    border-radius: 10px;
+    position: relative;
+    color: #003366;
+}
+
+div.logo {
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100px;
+}
+
+div.logo img {
+    width: 270px;
+    height: 192px;
+}
+
+div.footer {
+    background-color: #76D6FF;
+    background: -webkit-gradient(linear, left top, left bottom, from(white), to(#76D6FF));
+    background: linear-gradient(white, #76D6FF);
+    width: 100%;
+    height: 70px;
+    border-radius: 10px;
+}
+
+div.footerText {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    padding-top: 35px;
+    font-size: 10pt;
+}
+
+a {
+    color: inherit;
+}
+
+div.cloudtitle {
+    height: 95px;
+    width: 100%;
+    text-align: right;
+    background-image: url('/images/Cloud_sm.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    margin-bottom: 20px;
+}
+
+div.cloudtitletext {
+    padding-top: 20px;
+    width: 100%;
+    text-align: right;
+    color: #003366;
+}

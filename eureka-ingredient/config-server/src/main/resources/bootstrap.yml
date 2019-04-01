@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: config-server
+  profiles:
+    active:
+      - vault
+      - git
+  cloud:
+    config:
+      server:
+        encrypt:
+          # This property must be set in bootstrap.yml
+          enabled: false
+
+encrypt:
+  key-store:
+    alias: tacokey
+    location: https://raw.githubusercontent.com/chainyhorn/tacocloud-config/master/keystore.jks
+    password: l3tm31n
+    secret: l3tm31n

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.1.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.atzu68</groupId>
+    <artifactId>taco-cloud-reactive-cassandra</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>taco-cloud-reactive-cassandra</name>
+    <description>Taco Cloud with WebFlux and Reactive Cassandra</description>
+
+    <properties>
+        <java.version>11</java.version>
+        <tacocloud.version>${project.version}</tacocloud.version>
+    </properties>
+
+    <modules>
+        <module>taco-cloud-domain</module>
+        <module>taco-cloud-data</module>
+        <module>taco-cloud-security</module>
+        <module>taco-cloud-web</module>
+        <module>taco-cloud-api</module>
+        <module>taco-cloud-app</module>
+    </modules>
+
+</project>

@@ -1,0 +1,21 @@
+logging:
+  level:
+    root: info
+
+spring:
+  datasource:
+    initialization-mode: never
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+    drop-first: true
+
+taco:
+  orders:
+    page-size: 10
+  discount:
+    codes:
+      abcdef: 10

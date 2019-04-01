@@ -1,0 +1,16 @@
+logging:
+  level:
+    root: info
+
+spring:
+  data:
+    cassandra:
+      keyspace-name: tacocloud
+      schema-action: recreate_drop_unused
+
+taco:
+  orders:
+    page-size: 10
+  discount:
+    codes:
+      abcdef: 10

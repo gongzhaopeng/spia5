@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: ingredient-client
+
+  cloud:
+    config:
+      uri: http://localhost:8888
+      token: roottoken
+
+encrypt:
+  key-store:
+    alias: tacokey
+    location: https://raw.githubusercontent.com/chainyhorn/tacocloud-config/master/keystore.jks
+    password: l3tm31n
+    secret: l3tm31n

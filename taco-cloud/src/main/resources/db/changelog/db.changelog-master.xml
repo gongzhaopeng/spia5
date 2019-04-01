@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="atzu68">
+        <createTable tableName="ingredient">
+            <column name="id" type="varchar(4)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="taco">
+            <column name="id" type="bigserial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="taco_ingredients">
+            <column name="taco_id" type="bigserial">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ingredients_id" type="varchar(4)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="taco_ingredients"
+                                 baseColumnNames="taco_id"
+                                 constraintName="fk_ingredient_taco"
+                                 referencedTableName="taco"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="taco_ingredients"
+                                 baseColumnNames="ingredients_id"
+                                 constraintName="fk_taco_ingredient"
+                                 referencedTableName="ingredient"
+                                 referencedColumnNames="id"/>
+
+        <createTable tableName="taco_order">
+            <column name="id" type="bigserial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="bigserial">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery_street" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery_city" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery_state" type="varchar(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery_zip" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cc_number" type="varchar(16)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cc_expiration" type="varchar(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cccvv" type="varchar(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="placed_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user">
+            <column name="id" type="bigserial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fullname" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="street" type="varchar(50)"/>
+            <column name="city" type="varchar(50)"/>
+            <column name="state" type="varchar(2)"/>
+            <column name="zip" type="varchar(10)"/>
+            <column name="phone_number" type="varchar(16)"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="taco_order"
+                                 baseColumnNames="user_id"
+                                 constraintName="fk_taco_user"
+                                 referencedTableName="user"
+                                 referencedColumnNames="id"/>
+
+        <createTable tableName="taco_order_tacos">
+            <column name="order_id" type="bigserial">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tacos_id" type="bigserial">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="taco_order_tacos"
+                                 baseColumnNames="order_id"
+                                 constraintName="fk_taco_order"
+                                 referencedTableName="taco_order"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="taco_order_tacos"
+                                 baseColumnNames="tacos_id"
+                                 constraintName="fk_order_taco"
+                                 referencedTableName="taco"
+                                 referencedColumnNames="id"/>
+
+        <!-- Not supported for MySQL -->
+        <createSequence sequenceName="hibernate_sequence"/>
+
+        <insert tableName="ingredient">
+            <column name="id" value="FLTO"/>
+            <column name="name" value="Flour Tortilla"/>
+            <column name="type" value="WRAP"/>
+        </insert>
+        <insert tableName="ingredient">
+            <column name="id" value="COTO"/>
+            <column name="name" value="Corn Tortilla"/>
+            <column name="type" value="WRAP"/>
+        </insert>
+        <insert tableName="ingredient">
+            <column name="id" value="GRBF"/>
+            <column name="name" value="Ground Beef"/>
+            <column name="type" value="PROTEIN"/>
+        </insert>
+        <insert tableName="ingredient">
+            <column name="id" value="CARN"/>
+            <column name="name" value="Carnitas"/>
+            <column name="type" value="PROTEIN"/>
+        </insert>
+        <insert tableName="ingredient">
+            <column name="id" value="TMTO"/>
+            <column name="name" value="Diced Tomatoes"/>
+            <column name="type" value="VEGGIES"/>
+        </insert>
+        <insert tableName="ingredient">
+            <column name="id" value="LETC"/>
+            <column name="name" value="Lettuce"/>
+            <column name="type" value="VEGGIES"/>
+        </insert>
+        <insert tableName="ingredient">
+            <column name="id" value="CHED"/>
+            <column name="name" value="Cheddar"/>
+            <column name="type" value="CHEESE"/>
+        </insert>
+        <insert tableName="ingredient">
+            <column name="id" value="JACK"/>
+            <column name="name" value="Monterrey Jack"/>
+            <column name="type" value="CHEESE"/>
+        </insert>
+        <insert tableName="ingredient">
+            <column name="id" value="SLSA"/>
+            <column name="name" value="Salsa"/>
+            <column name="type" value="SAUCE"/>
+        </insert>
+        <insert tableName="ingredient">
+            <column name="id" value="SRCR"/>
+            <column name="name" value="Sour Cream"/>
+            <column name="type" value="SAUCE"/>
+        </insert>
+
+        <insert tableName="user">
+            <column name="username" value="atzu68"/>
+            <column name="password" value="{noop}password"/>
+            <column name="fullname" value="atzu68"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
